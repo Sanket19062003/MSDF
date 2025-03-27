@@ -39,7 +39,7 @@ function FloatingPaths({ position }: { position: number }) {
                             pathOffset: [0, 1, 0],
                         }}
                         transition={{
-                            duration: 20 + Math.random() * 10,
+                            duration: 10 + Math.random() * 5,
                             repeat: Number.POSITIVE_INFINITY,
                             ease: "linear",
                         }}
@@ -55,21 +55,17 @@ export function BackgroundPaths({
 }: {
     title?: string;
 }) {
-    const scrollToFeatures = () => {
-        const featuresSection = document.getElementById('features');
-        if (featuresSection) {
-            // Get the viewport height
+    const scrollToSensors = () => {
+        const sensorsSection = document.getElementById('sensors');
+        if (sensorsSection) {
             const viewportHeight = window.innerHeight;
-            // Get the element's position relative to the viewport
-            const rect = featuresSection.getBoundingClientRect();
-            // Calculate the scroll position to center the element
+            const rect = sensorsSection.getBoundingClientRect();
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const targetPosition = scrollTop + rect.top - (viewportHeight - rect.height) / 4;
+            const targetPosition = scrollTop + rect.top - 80;
 
             window.scrollTo({
                 top: targetPosition,
-                behavior: 'smooth',
-                // Add easing for smoother animation
+                behavior: 'smooth'
             });
         }
     };
@@ -92,38 +88,16 @@ export function BackgroundPaths({
                 >
                     <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 
                     font-bold mb-6 sm:mb-8 md:mb-10 tracking-tighter px-4">
-                        {words.map((word, wordIndex) => (
-                            <span
-                                key={wordIndex}
-                                className="inline-block mr-3 sm:mr-4 last:mr-0"
-                            >
-                                {word.split("").map((letter, letterIndex) => (
-                                    <motion.span
-                                        key={`${wordIndex}-${letterIndex}`}
-                                        initial={{ y: 100, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{
-                                            delay:
-                                                wordIndex * 0.1 +
-                                                letterIndex * 0.03,
-                                            type: "spring",
-                                            stiffness: 150,
-                                            damping: 25,
-                                        }}
-                                        className="inline-block text-transparent bg-clip-text 
-                                        bg-gradient-to-r from-white to-white/80"
-                                    >
-                                        {letter}
-                                    </motion.span>
-                                ))}
+                        {words.map((word, i) => (
+                            <span key={i} className="inline-block">
+                                {word}{" "}
                             </span>
                         ))}
                     </h1>
-
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4">
                         <GradientButton 
                             className="gradient-button w-full sm:w-auto min-w-[200px]"
-                            onClick={scrollToFeatures}
+                            onClick={scrollToSensors}
                         >
                             <span className="flex items-center justify-center">
                                 Implementation
@@ -134,7 +108,7 @@ export function BackgroundPaths({
                         </GradientButton>
                         <GradientButton 
                             className="gradient-button gradient-button-variant w-full sm:w-auto min-w-[200px]"
-                            onClick={scrollToFeatures}
+                            onClick={scrollToSensors}
                         >
                             <span className="flex items-center justify-center">
                                 Info

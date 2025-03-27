@@ -5,37 +5,26 @@ import Image from "next/image";
 import lidarImage from "@/assets/lidar-sensor.png";
 import thermalImage from "@/assets/thermal-imagery.png";
 import { Button } from "@/components/ui/button";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 export function FeaturesSection() {
-    const scrollToSensors = () => {
-        const sensorsSection = document.getElementById('sensors');
-        if (sensorsSection) {
-            const viewportHeight = window.innerHeight;
-            const rect = sensorsSection.getBoundingClientRect();
+    const scrollToSection = (sectionId: string) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            const rect = section.getBoundingClientRect();
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const targetPosition = scrollTop + rect.top - (viewportHeight - rect.height) / 4;
+            const targetPosition = scrollTop + rect.top - 80;
 
             window.scrollTo({
                 top: targetPosition,
-                behavior: 'smooth',
+                behavior: 'smooth'
             });
         }
     };
 
     return (
-        <section id="features" className="relative w-full bg-neutral-950 py-12 overflow-hidden">
+        <section className="relative w-full bg-neutral-950 py-12">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-8"
-                >
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
-                        Sensors
-                    </h2>
-                </motion.div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                     {/* First Card */}
                     <motion.div
@@ -46,6 +35,14 @@ export function FeaturesSection() {
                     >
                         <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
                         <div className="relative bg-neutral-900/50 backdrop-blur-xl rounded-3xl p-6 border border-white/10 h-full">
+                            <GlowingEffect
+                                spread={40}
+                                glow={true}
+                                disabled={false}
+                                proximity={64}
+                                inactiveZone={0.01}
+                                borderWidth={2}
+                            />
                             <div className="aspect-[4/3] mb-4 overflow-hidden rounded-xl bg-neutral-900/50 backdrop-blur-xl relative">
                                 <div className="absolute inset-0 flex items-center justify-center p-6">
                                     <Image 
@@ -63,7 +60,7 @@ export function FeaturesSection() {
                             <Button 
                                 variant="outline" 
                                 className="w-full hover:bg-blue-500/20"
-                                onClick={scrollToSensors}
+                                onClick={() => scrollToSection('lidar-card')}
                             >
                                 More Info
                             </Button>
@@ -79,6 +76,14 @@ export function FeaturesSection() {
                     >
                         <div className="absolute inset-0 bg-gradient-to-b from-purple-500/20 to-pink-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
                         <div className="relative bg-neutral-900/50 backdrop-blur-xl rounded-3xl p-6 border border-white/10 h-full">
+                            <GlowingEffect
+                                spread={40}
+                                glow={true}
+                                disabled={false}
+                                proximity={64}
+                                inactiveZone={0.01}
+                                borderWidth={2}
+                            />
                             <div className="aspect-[4/3] mb-4 overflow-hidden rounded-xl bg-neutral-900/50 backdrop-blur-xl relative">
                                 <div className="absolute inset-0 flex items-center justify-center p-6">
                                     <Image 
@@ -96,7 +101,7 @@ export function FeaturesSection() {
                             <Button 
                                 variant="outline" 
                                 className="w-full hover:bg-purple-500/20"
-                                onClick={scrollToSensors}
+                                onClick={() => scrollToSection('thermal-card')}
                             >
                                 More Info
                             </Button>
