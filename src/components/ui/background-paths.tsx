@@ -1,5 +1,4 @@
 "use client";
-"use client";
 
 import { motion } from "framer-motion";
 import { GradientButton } from "@/components/ui/gradient-button";
@@ -19,13 +18,11 @@ function FloatingPaths({ position }: { position: number }) {
     }));
 
     return (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
             <svg
-                className="w-[150%] h-[150%] md:w-full md:h-full text-white/20 -translate-x-1/4 
-                md:translate-x-0 scale-125 md:scale-100"
+                className="w-full h-full text-white/20"
                 viewBox="0 0 696 316"
                 fill="none"
-                preserveAspectRatio="xMidYMid slice"
             >
                 <title>Background Paths</title>
                 {paths.map((path) => (
@@ -58,6 +55,25 @@ export function BackgroundPaths({
 }: {
     title?: string;
 }) {
+    const scrollToFeatures = () => {
+        const featuresSection = document.getElementById('features');
+        if (featuresSection) {
+            // Get the viewport height
+            const viewportHeight = window.innerHeight;
+            // Get the element's position relative to the viewport
+            const rect = featuresSection.getBoundingClientRect();
+            // Calculate the scroll position to center the element
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const targetPosition = scrollTop + rect.top - (viewportHeight - rect.height) / 4;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth',
+                // Add easing for smoother animation
+            });
+        }
+    };
+
     const words = title.split(" ");
 
     return (
@@ -105,7 +121,10 @@ export function BackgroundPaths({
                     </h1>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4">
-                        <GradientButton className="gradient-button w-full sm:w-auto min-w-[200px]">
+                        <GradientButton 
+                            className="gradient-button w-full sm:w-auto min-w-[200px]"
+                            onClick={scrollToFeatures}
+                        >
                             <span className="flex items-center justify-center">
                                 Implementation
                                 <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
@@ -113,7 +132,10 @@ export function BackgroundPaths({
                                 </span>
                             </span>
                         </GradientButton>
-                        <GradientButton className="gradient-button gradient-button-variant w-full sm:w-auto min-w-[200px]">
+                        <GradientButton 
+                            className="gradient-button gradient-button-variant w-full sm:w-auto min-w-[200px]"
+                            onClick={scrollToFeatures}
+                        >
                             <span className="flex items-center justify-center">
                                 Info
                                 <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
@@ -126,4 +148,4 @@ export function BackgroundPaths({
             </div>
         </div>
     );
-} 
+}
