@@ -1,3 +1,5 @@
+"use client"
+
 import { BackgroundPaths } from "@/components/ui/background-paths"
 import { FeaturesSection } from "@/components/ui/features-section"
 import { NavBarDemo } from "@/components/ui/nav-bar-demo"
@@ -79,8 +81,10 @@ export default function Home() {
                                             src={pcdFile}
                                             alt="PCD File Visualization"
                                             fill
+                                            sizes="(max-width: 1024px) 100vw, 500px"
                                             className="object-cover rounded-lg"
-                                            priority
+                                            loading="lazy"
+                                            quality={85}
                                         />
                                     </div>
                                 </div>
@@ -109,8 +113,10 @@ export default function Home() {
                                             src={thermalOutput}
                                             alt="Thermal Imaging Output"
                                             fill
+                                            sizes="(max-width: 1024px) 100vw, 500px"
                                             className="object-cover rounded-lg"
-                                            priority
+                                            loading="lazy"
+                                            quality={85}
                                         />
                                     </div>
                                 </div>

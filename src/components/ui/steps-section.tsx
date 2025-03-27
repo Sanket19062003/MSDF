@@ -3,6 +3,7 @@
 import { FileImage, Scan, Boxes, GitMerge, LayoutPanelTop } from "lucide-react";
 import { motion } from "framer-motion";
 import { VerticalGeminiEffectDemo } from "./vertical-gemini-effect-demo";
+import { ShapeLandingBackground } from "./shape-landing-hero";
 
 export function StepsSection() {
   const steps = [
@@ -44,8 +45,9 @@ export function StepsSection() {
   ];
 
   return (
-    <section className="relative w-full bg-neutral-950 py-12 sm:py-16 md:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="steps" className="relative w-full bg-neutral-950/50 py-12 sm:py-16 md:py-20 scroll-mt-20 overflow-hidden">
+      <ShapeLandingBackground />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +67,7 @@ export function StepsSection() {
                 className="relative group pl-12 sm:pl-16 md:pl-24"
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${step.color} rounded-2xl sm:rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100`}></div>
-                <div className="relative bg-neutral-900/40 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-white/10">
+                <div className="relative bg-neutral-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-white/10">
                   <div className="absolute -left-6 sm:-left-8 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-neutral-800/50 flex items-center justify-center border border-white/5">
                     {<step.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white/70" />}
                   </div>
