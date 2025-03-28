@@ -52,8 +52,10 @@ function FloatingPaths({ position }: { position: number }) {
 
 export function BackgroundPaths({
     title = "Background Paths",
+    children,
 }: {
     title?: string;
+    children?: React.ReactNode;
 }) {
     const scrollToSensors = () => {
         const sensorsSection = document.getElementById('sensors');
@@ -97,7 +99,7 @@ export function BackgroundPaths({
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4">
                         <GradientButton 
                             className="gradient-button w-full sm:w-auto min-w-[200px]"
-                            onClick={scrollToSensors}
+                            href="/implementation"
                         >
                             <span className="flex items-center justify-center">
                                 Implementation
@@ -118,6 +120,7 @@ export function BackgroundPaths({
                             </span>
                         </GradientButton>
                     </div>
+                    {children}
                 </motion.div>
             </div>
         </div>

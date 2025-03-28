@@ -12,7 +12,7 @@ import pcdFile from "@/assets/pcd_file.png"
 import thermalOutput from "@/assets/thermal_output.png"
 
 export default function Home() {
-    return (
+  return (
         <main className="min-h-screen">
             <NavBarDemo />
             <BackgroundPaths title="Welcome to MSDF" />
@@ -75,9 +75,9 @@ export default function Home() {
                                             <span>• Comprehensive point cloud data generation</span>
                                             <span>• Perfect for precise measurement applications</span>
                                         </p>
-                                    </div>
+        </div>
                                     <div className="relative w-full lg:w-[500px] aspect-[16/9] rounded-lg overflow-hidden">
-                                        <Image 
+          <Image
                                             src={pcdFile}
                                             alt="PCD File Visualization"
                                             fill
@@ -109,7 +109,7 @@ export default function Home() {
                                         </p>
                                     </div>
                                     <div className="relative w-full lg:w-[500px] aspect-[16/9] rounded-lg overflow-hidden">
-                                        <Image 
+          <Image
                                             src={thermalOutput}
                                             alt="Thermal Imaging Output"
                                             fill
@@ -124,7 +124,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+    </div>
 
             {/* Implementation Steps Section */}
             <StepsSection />
