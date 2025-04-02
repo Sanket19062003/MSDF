@@ -4,22 +4,26 @@ import { GoogleGeminiEffectDemo } from "@/components/ui/google-gemini-effect-dem
 import AnimatedGradientBackground from "@/components/ui/animated-gradient-background"
 import { GlowingEffect } from "@/components/ui/glowing-effect"
 import { motion } from "framer-motion"
-import { ArrowRight, Code2, Database, GitBranch, LineChart, Settings, Upload, FileType, Image, Database as DatasetIcon } from "lucide-react"
+import { ArrowRight, Code2, Database, GitBranch, LineChart, Settings, Upload, FileType, Image, Database as DatasetIcon, LayoutPanelTop, Boxes, GitMerge } from "lucide-react"
 import { useState } from "react"
 
+// File State Interface
 interface FileState {
   pcd: File | null;
   image: File | null;
   calibration: File | null;
 }
 
+// Main Implementation Page Component
 export default function ImplementationPage() {
+  // File State Management
   const [files, setFiles] = useState<FileState>({
     pcd: null,
     image: null,
     calibration: null
   });
 
+  // File Change Handler
   const handleFileChange = (type: 'pcd' | 'image' | 'calibration', e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFiles(prev => ({
@@ -31,7 +35,7 @@ export default function ImplementationPage() {
 
   return (
     <main className="min-h-screen bg-neutral-950">
-      {/* Hero Section with Gemini Effect */}
+      {/* Hero Section */}
       <section className="relative w-full overflow-hidden">
         <div className="relative min-h-[80vh] flex items-center">
           <GoogleGeminiEffectDemo />
@@ -52,8 +56,9 @@ export default function ImplementationPage() {
         </div>
       </section>
 
-      {/* Implementation Sections */}
+      {/* Main Content Section */}
       <section className="relative w-full py-20">
+        {/* Animated Background */}
         <AnimatedGradientBackground
           Breathing={true}
           startingGap={150}
@@ -71,6 +76,7 @@ export default function ImplementationPage() {
           containerClassName="opacity-100"
         />
         
+        {/* Feature Cards Container */}
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {/* Architecture Card */}
@@ -139,7 +145,7 @@ export default function ImplementationPage() {
               </div>
             </motion.div>
 
-            {/* Performance Card */}
+            {/* Performance Metrics Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -162,7 +168,7 @@ export default function ImplementationPage() {
             </motion.div>
           </div>
 
-          {/* Technical Details Section */}
+          {/* Technical Specifications Section */}
           <div className="mt-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -179,6 +185,7 @@ export default function ImplementationPage() {
                 <h2 className="text-3xl font-bold text-white">Technical Specifications</h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Core Features List */}
                 <div>
                   <h3 className="text-xl font-semibold text-white mb-4">Core Features</h3>
                   <ul className="space-y-3 text-white/60">
@@ -200,6 +207,7 @@ export default function ImplementationPage() {
                     </li>
                   </ul>
                 </div>
+                {/* Technologies List */}
                 <div>
                   <h3 className="text-xl font-semibold text-white mb-4">Technologies</h3>
                   <ul className="space-y-3 text-white/60">
@@ -243,8 +251,9 @@ export default function ImplementationPage() {
                   <h2 className="text-3xl font-bold text-white">Upload Files</h2>
                 </div>
 
+                {/* File Upload Cards Container */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {/* PCD File Upload */}
+                  {/* PCD File Upload Card */}
                   <div className="relative group">
                     <input
                       type="file"
@@ -271,7 +280,7 @@ export default function ImplementationPage() {
                     </div>
                   </div>
 
-                  {/* Image File Upload */}
+                  {/* Image File Upload Card */}
                   <div className="relative group">
                     <input
                       type="file"
@@ -298,7 +307,7 @@ export default function ImplementationPage() {
                     </div>
                   </div>
 
-                  {/* Calibration File Upload */}
+                  {/* Calibration File Upload Card */}
                   <div className="relative group">
                     <input
                       type="file"
@@ -326,7 +335,7 @@ export default function ImplementationPage() {
                   </div>
                 </div>
 
-                {/* Upload Button */}
+                {/* Process Button Section */}
                 <div className="mt-8 flex justify-center">
                   <button
                     className="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -334,6 +343,119 @@ export default function ImplementationPage() {
                   >
                     Process Files
                   </button>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Output Section */}
+          <section className="relative w-full py-10 sm:py-16 md:py-20">
+            <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="relative bg-neutral-900/40 backdrop-blur-xl rounded-3xl p-4 sm:p-6 md:p-8 border border-white/10"
+              >
+                <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} />
+                <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                  <div className="p-2 sm:p-3 rounded-2xl bg-indigo-500/10">
+                    <LayoutPanelTop className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-400" />
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white">Output</h2>
+                </div>
+
+                {/* Output Cards Container */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                  {/* Image Comparison Card */}
+                  <div className="relative bg-neutral-800/40 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/10">
+                    <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} />
+                    <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
+                      <div className="p-3 sm:p-4 rounded-xl bg-indigo-500/10">
+                        <Image className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">Image Comparison</h3>
+                        <p className="text-xs sm:text-sm text-white/60">Original vs Processed</p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full">
+                        <div className="aspect-video bg-neutral-700/30 rounded-lg flex items-center justify-center">
+                          {files.image ? (
+                            <img 
+                              src={URL.createObjectURL(files.image)} 
+                              alt="Original" 
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                          ) : (
+                            <span className="text-white/40 text-xs sm:text-sm">Original</span>
+                          )}
+                        </div>
+                        <div className="aspect-video bg-neutral-700/30 rounded-lg flex items-center justify-center">
+                          {files.image ? (
+                            <img 
+                              src={URL.createObjectURL(files.image)} 
+                              alt="Processed" 
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                          ) : (
+                            <span className="text-white/40 text-xs sm:text-sm">Processed</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Object Detection Card */}
+                  <div className="relative bg-neutral-800/40 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/10">
+                    <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} />
+                    <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
+                      <div className="p-3 sm:p-4 rounded-xl bg-purple-500/10">
+                        <Boxes className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">Object Detection</h3>
+                        <p className="text-xs sm:text-sm text-white/60">Detected Objects</p>
+                      </div>
+                      <div className="w-full space-y-2">
+                        {[
+                          { label: "Car", confidence: 95 },
+                          { label: "Person", confidence: 87 }
+                        ].map((detection, index) => (
+                          <div key={index} className="flex items-center justify-between bg-neutral-700/30 rounded-lg p-2 text-xs sm:text-sm">
+                            <span className="text-white">{detection.label}</span>
+                            <span className="text-emerald-400">{detection.confidence}%</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Point Cloud Data Card */}
+                  <div className="relative bg-neutral-800/40 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/10">
+                    <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} />
+                    <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
+                      <div className="p-3 sm:p-4 rounded-xl bg-blue-500/10">
+                        <GitMerge className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">Point Cloud Data</h3>
+                        <p className="text-xs sm:text-sm text-white/60">3D Coordinates</p>
+                      </div>
+                      <div className="w-full space-y-2">
+                        {[
+                          { x: 1.23, y: 2.45, z: 3.67 },
+                          { x: 2.34, y: 3.56, z: 4.78 },
+                          { x: 3.45, y: 4.67, z: 5.89 }
+                        ].map((point, index) => (
+                          <div key={index} className="flex items-center justify-between bg-neutral-700/30 rounded-lg p-2 text-xs sm:text-sm">
+                            <span className="text-white">Point {index + 1}</span>
+                            <span className="text-blue-400">{point.x}, {point.y}, {point.z}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </div>
